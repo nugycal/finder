@@ -1,0 +1,25 @@
+#!/usr/local/bin/zsh
+
+get_id() {
+    if [[ -e $1 ]]; then
+        mdls -name kMDItemCFBundleIdentifier -r "$1"
+    else
+        echo "Unable to locate application bundle '$1'" > /dev/stderr
+        exit 1
+    fi
+}
+
+if [[ $# != 2 ]]; then
+    echo "Usage: $0 <file extension> <path to application bundle>" > /dev/stderr
+    echo "Example: $0 mp4 /Applications/mpv.app" > /dev/stderr
+    echo > /dev/stderr
+    echo "Note: It is suggested that you drag-and-drop the Application from finder to this window to get the path to the application bundle" > /dev/stderr
+    exit 1
+fi
+
+app="$2"
+ft="$1"
+
+id="$(get_id "$app")"
+
+duti -s "$id" ".$ft" all

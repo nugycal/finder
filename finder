@@ -1,0 +1,14 @@
+#!/usr/local/bin/zsh
+
+if [[ "$#" != 1 ]]
+then
+    open -a Finder "$PWD"
+else
+    if [[ -d "$1" ]]; then
+        open -a Finder "$1"
+    elif [[ -e "$1" ]]; then
+        open -R "$1"
+    else
+        open -a Finder "$PWD"
+    fi
+fi
