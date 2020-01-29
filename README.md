@@ -12,6 +12,8 @@ Usage: `cdfinder`
 
 Changes the default app for a particular filetype.
 
+#### Depends upon [duti](https://github.com/moretension/duti)
+
 Usage: `chdefapp <filetype> <path to application bundle>`
 
 ## `finder`
