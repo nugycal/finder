@@ -1,0 +1,10 @@
+#!/usr/local/bin/zsh
+
+# If finder is running, cd into the top-most window
+# If finder is not running, cd to the home directory
+
+if ps aux | egrep "^$USER" | egrep -q 'Finder\.app'; then
+    cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
+else
+    cd ~
+fi
